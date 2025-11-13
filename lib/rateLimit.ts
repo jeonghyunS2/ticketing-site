@@ -4,7 +4,11 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE,
   headers: { "Content-Type": "application/json" },
+
+  // ★★★★★ 핵심 ★★★★★
+  validateStatus: () => true, 
 });
+
 
 // ✅ 요청 시 레이트리밋 헤더 포함
 api.interceptors.request.use((config: AxiosRequestConfig) => {
